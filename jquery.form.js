@@ -178,7 +178,13 @@ $.fn.ajaxSubmit = function(options) {
 		var s = $.extend(true, {}, $.extend(true, {}, $.ajaxSettings), opts);
 
 		var id = 'jqFormIO' + (new Date().getTime());
-		var $io = $('<iframe id="' + id + '" name="' + id + '" src="'+ opts.iframeSrc +'" onload="(jQuery(this).data(\'form-plugin-onload\'))()" />');
+		
+		var $io = $("<iframe />").attr("id", id).attr("name", id).attr("src", opts.iframeSrc).load(function () {
+		
+			($(this).data("form-plugin-onload") || function () {})();
+		
+		});
+		
 		var io = $io[0];
 
 		$io.css({ position: 'absolute', top: '-1000px', left: '-1000px' });
