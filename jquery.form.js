@@ -60,11 +60,11 @@ $.fn.ajaxSubmit = function(options) {
    	}
    	url = url || window.location.href || '';
 
-	options = $.extend({
+	options = $.extend(true, {}, {
 		url:  url,
 		type: this.attr('method') || 'GET',
 		iframeSrc: /^https/i.test(window.location.href || '') ? 'javascript:false' : 'about:blank'
-	}, options || {});
+	}, options);
 
 	// hook for manipulating the form data before it is extracted;
 	// convenient for use with rich editors like tinyMCE or FCKEditor
