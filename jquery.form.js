@@ -179,11 +179,7 @@ $.fn.ajaxSubmit = function(options) {
 
 		var id = 'jqFormIO' + (new Date().getTime());
 		
-		var $io = $("<iframe />").attr("id", id).attr("name", id).attr("src", opts.iframeSrc).load(function () {
-		
-			($(this).data("form-plugin-onload") || function () {})();
-		
-		});
+		var $io = $("<iframe />").attr("id", id).attr("name", id).attr("src", opts.iframeSrc);
 		
 		var io = $io[0];
 
